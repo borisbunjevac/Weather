@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="bb1.css">
+        <title></title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+        <script>
+
+            $(document).ready(function testInput() {
+                $('#myInputElement').bind('change', function () {
+                    //var oldvalue = ???
+                    newvalue = $(this).val();
+                    
+                var api = 'http://api.openweathermap.org/data/2.5/weather?q=';
+                var key = '&appid=44db6a862fba0b067b1930da0d769e98';
+                var units = '&units=metric';
+                var url = api + newvalue + key + units;
+                $("button").click(function () {
+                    $("#div2").load(url);
+                });
+                
+                });
+            });
+            
+</script>
+
+       
+
+    </head>
+    <body>
+       <h1>Weather Report</h1>
+
+        <p>Type the city for which you want weather information.</p>
+
+        <input id="myInputElement" type="text">
+         <br><br>
+                <button id="submit">Submit</button>
+               
+        <div id="div2"><p>Get your weather here</p></div>
+
+
+         
+    </body>
+</html>

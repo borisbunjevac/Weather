@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="bb1.css">
+        <title></title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+        
+    </head>
+    <body>
+        
+    <section>
+
+        <h1>Weather Report</h1>
+
+    <p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+    var x = document.getElementById("demo");
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+         var api = 'http://api.openweathermap.org/data/2.5/weather?lat=';
+         var tlongi = '&lon=';
+         var key = '&lon=139&appid=44db6a862fba0b067b1930da0d769e98';
+         var units = '&units=metric';
+         var url = api + latitude + tlongi + longitude + key + units;      
+         $("button").click(function () {
+                    $("#div1").load(url);
+                });             
+    }
+   
+</script>
+
+        <p>Click again to get your weather</p>
+
+<div id="div1"><p>Get your weather here</p></div>
+
+    
+    </section>
+    </body>
+</html>
